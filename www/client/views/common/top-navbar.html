@@ -1,0 +1,20 @@
+<template name="topNavbar">
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a id="navbar-minimalize" class="minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right" style="float: right;">
+                <li>
+                    <a href="#">
+                        {{#if currentUser}}
+                            <a href='{{pathFor route="home"}}' id="sign-out"><i class="fa fa-sign-out"></i> Logout</a>
+                        {{else}}
+                            <a href='{{pathFor route="login"}}' id="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                        {{/if}}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</template>

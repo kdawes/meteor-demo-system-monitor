@@ -1,0 +1,48 @@
+<template name="navigation">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <!-- Close canvas menu used only on OffCanvas page -->
+            <!-- You can remove this tag if you dont use offCanvas menu -->
+            <a class="close-canvas-menu"><i class="fa fa-times"></i></a>
+            <!-- End offCanvas menu toggle -->
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    {{#if currentUser}}
+                    <div class="dropdown profile-element">
+                        {{#if currentUser.profile.picture}}
+                        <span>
+                            <img alt="image" class="img-circle img-profile" src="{{currentUser.profile.picture}}" />
+                        </span>
+                        {{/if}}
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{currentUser.profile.name}}</strong></span> 
+                            <span class="text-muted text-xs block">Account <b class="caret"></b></span> </span> 
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="{{pathFor route='settings'}}">Settings</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        {{#if currentUser.profile.picture}}
+                            <img alt="image" class="img-circle img-profile" src="{{currentUser.profile.picture}}" />
+                        {{/if}}
+                    </div>
+                    {{/if}}
+                </li>
+                <li class="special_link">
+                    <a href="{{pathFor route='home'}}"><i class="fa fa-star"></i> <span class="nav-label">Home</span></a>
+                </li>
+                {{#if currentUser}}
+                <li class="{{isActiveRoute regex='dashboard'}}">
+                    <a href="{{pathFor route='dashboard'}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Dashboard</span> </a>
+                </li>
+                {{#if currentUser.profile.isAdmin}}
+                    <li class="{{isActiveRoute regex='administration'}}">
+                        <a href="{{pathFor route='administration'}}"><i class="fa fa-wrench"></i> <span class="nav-label">Administration</span> </a>
+                    </li>
+                {{/if}}
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+</template>
